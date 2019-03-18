@@ -1,1 +1,30 @@
 /* All styles for your Card Components live here */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.cardContainer {
+    max-width: 500px;
+    margin-left: 100px;
+    border-radius: 7px;
+    border: 1px solid rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.cardContainer p {
+    padding: 5px 10px;
+    margin: 0;
+}
+.cardContainer p:first-child {
+    padding-top: 10px;
+}
+.cardContainer:last-child {
+    padding-bottom: 10px;
+}
+
+.cardContainer img {
+    width: 100%;
+    height: auto;
+}
+
