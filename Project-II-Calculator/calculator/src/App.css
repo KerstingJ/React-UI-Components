@@ -5,6 +5,8 @@
     border: 1px solid grey;
     padding-right: 0;
     margin: 20px;
+
+    font-weight: 300;
 }
 .btnContainer {
     width: 400px;

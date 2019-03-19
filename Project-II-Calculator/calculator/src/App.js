@@ -24,7 +24,7 @@ class App extends React.Component {
     this.setState({"value": undefined})
   }
 
-  addToEquation(event){
+  addEquation(event){
     let operator = event.target.textContent;
     this.setState({
       "first": parseInt(this.state.value), 
@@ -37,16 +37,19 @@ class App extends React.Component {
     console.log(this.state);
     switch(this.state.operator){
       case "÷" :
-        this.setState({"value": this.state.first / parseInt(this.state.value)})
+        this.setState({"value": this.state.first / parseInt(this.state.value, 10)})
         break;
-      case "X" :
-        this.setState({"value": this.state.first * parseInt(this.state.value)})
+      case "x" :
+        this.setState({"value": this.state.first * parseInt(this.state.value, 10)})
         break;
       case "-" :
-        this.setState({"value": this.state.first - parseInt(this.state.value)})
+        this.setState({"value": this.state.first - parseInt(this.state.value, 10)})
         break;
       case "+" :
-        this.setState({"value": this.state.first + parseInt(this.state.value)})
+        this.setState({"value": this.state.first + parseInt(this.state.value, 10)})
+        break;
+      default:
+        break;
     }
   }
 
@@ -64,10 +67,10 @@ class App extends React.Component {
             <NumBtn onClick={this.addToDisplay.bind(this)} value="0" size="bigBtn" />
           </div>
           <div className="redBtns">
-            <ActBtn onClick={this.addToEquation.bind(this)} value="÷" />
-            <ActBtn onClick={this.addToEquation.bind(this)} value="X" />
-            <ActBtn onClick={this.addToEquation.bind(this)} value="-" />
-            <ActBtn onClick={this.addToEquation.bind(this)} value="+" />
+            <ActBtn onClick={this.addEquation.bind(this)} value="÷" />
+            <ActBtn onClick={this.addEquation.bind(this)} value="x" />
+            <ActBtn onClick={this.addEquation.bind(this)} value="-" />
+            <ActBtn onClick={this.addEquation.bind(this)} value="+" />
             <ActBtn onClick={this.compute.bind(this)} value="=" />
           </div>
         </div>
