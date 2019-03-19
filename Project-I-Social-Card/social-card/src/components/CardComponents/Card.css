@@ -5,6 +5,7 @@ a {
 }
 
 .cardContainer {
+    display: inline-block;
     max-width: 500px;
     margin-left: 100px;
     border-radius: 7px;
