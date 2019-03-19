@@ -1,10 +1,12 @@
 import React from 'react';
 import './Button.css';
 
-const NumberButton = props => {
-    return (
-        <div className={`btn numBtn ${props.size}`}>{props.value}</div>
-    );
+class NumberButton extends React.Component {
+     render(){
+        return (
+            <div onClick={this.props.onClick} className={`btn numBtn ${this.props.size || ""}`}>{this.props.value}</div>
+        );
+    }
 }
 
 export default NumberButton;

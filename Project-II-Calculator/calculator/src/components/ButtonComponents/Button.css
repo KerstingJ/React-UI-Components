@@ -11,3 +11,8 @@
 .bigBtn {
     width: 298px;
 }
+
+.red {
+    background: darkred;
+    color: white;
+}
