@@ -1,0 +1,17 @@
+.display {
+    width: 400px;
+    height: 98px;
+
+    padding: 10px;
+
+    font-size: 80px;
+    background: rgb(12, 32, 20);
+    color: rgb(252, 247, 225);
+    border: 1px solid grey;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    box-sizing: border-box;
+}
