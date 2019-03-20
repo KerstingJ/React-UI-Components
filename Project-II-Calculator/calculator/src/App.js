@@ -16,7 +16,7 @@ class App extends React.Component {
   addToDisplay(event){
     let value = event.target.textContent;
 
-    //displays input and outcome of equation
+    //updates state.value, the property that is sent to calculator to display
     if (this.state.value === "0" || isNaN(this.state.value)) { // handles for leading 0's
       this.setState({"value": value, "misfire": false});
     } else {
@@ -43,23 +43,22 @@ class App extends React.Component {
       if (isNaN(this.state.operand)){
         newOperand = parseInt(this.state.value, 10);
       } else {
-        newOperand = this.compute(null, operator);
+        //this lets you chain equations, computed in the order they are entered
+        newOperand = this.compute();
       }
 
-      console.log("before set state", this.state);
       this.setState({
         "operand": newOperand,
         "value": "0",
         "operator": operator,
         "misfire": true,
       })
-      console.log("After set state", this.state);
     }
   }
   
-  compute(event, operator = this.state.operator){
+  compute(){
     let total = parseInt(this.state.value, 10);
-    switch(operator){
+    switch(this.state.operator){
       case "÷" :
         total = this.state.operand / parseInt(this.state.value, 10);
         break;
@@ -83,14 +82,17 @@ class App extends React.Component {
   render(){
     return (
       <div className="calc">
+        {/* display, btnContainer */}
         <Display value={this.state.value}/>
 
         <div className="btnContainer">
-
+          {/* whiteBtns, redBtns */}
           <div className="whiteBtns">
+            {/* ActBtn.clear, numContainer, NumBtn.zero */}
             <ActBtn onClick={this.clear.bind(this)} value="clear" size="bigBtn" />
 
             <div className="numContainer">
+              {/* 1-9 # Btns */}
               {[1,2,3,4,5,6,7,8,9].map(num => <NumBtn onClick={this.addToDisplay.bind(this)} value={num} key={num}/>)}
             </div>
 
@@ -98,6 +100,7 @@ class App extends React.Component {
           </div>
             
           <div className="redBtns">
+            {/* operator btns */}
             <ActBtn onClick={this.addOperation.bind(this)} value="÷" />
             <ActBtn onClick={this.addOperation.bind(this)} value="x" />
             <ActBtn onClick={this.addOperation.bind(this)} value="-" />
