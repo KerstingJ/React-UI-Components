@@ -10,17 +10,17 @@ import ActBtn from './components/ButtonComponents/ActionButton.js';
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {"value": undefined, "operand": undefined, "operator": undefined};
+    this.state = {"value": undefined, "operand": undefined, "operator": undefined, "misfire": false};
   }
 
   addToDisplay(event){
     let value = event.target.textContent;
 
     //displays input and outcome of equation
-    if (this.state.value === undefined || this.state.value === "0") { // handles for leading 0's
-      this.setState({"value": value});
+    if (this.state.value === "0" || isNaN(this.state.value)) { // handles for leading 0's
+      this.setState({"value": value, "misfire": false});
     } else {
-      this.setState({"value": this.state.value + value});
+      this.setState({"value": this.state.value + value, "misfire": false});
     }
   }
 
@@ -34,32 +34,48 @@ class App extends React.Component {
   }
 
   addOperation(event){
-    let operator = event.target.textContent;
-    this.setState({
-      "operand": this.state.operand || parseInt(this.state.value, 10), //handles double clicked operators
-      "value": undefined,
-      "operator": operator,
-    })
-  }
+    if (this.state.misfire === false){
+      let operator = event.target.textContent;
+      let newOperand = undefined;
 
-  compute(){
-    console.log(this.state);
-    switch(this.state.operator){
+      if (isNaN(this.state.operand)){
+        newOperand = parseInt(this.state.value, 10);
+      } else {
+        newOperand = this.compute(null, operator);
+      }
+
+      console.log("before set state", this.state);
+      this.setState({
+        "operand": newOperand,
+        "value": "0",
+        "operator": operator,
+        "misfire": true,
+      })
+      console.log("After set state", this.state);
+    }
+  }
+  
+  compute(event, operator = this.state.operator){
+    let total = parseInt(this.state.value, 10);
+    switch(operator){
       case "÷" :
-        this.setState({"value": this.state.operand / parseInt(this.state.value, 10)})
+        total = this.state.operand / parseInt(this.state.value, 10);
         break;
       case "x" :
-        this.setState({"value": this.state.operand * parseInt(this.state.value, 10)})
+        total = this.state.operand * parseInt(this.state.value, 10);
         break;
       case "-" :
-        this.setState({"value": this.state.operand - parseInt(this.state.value, 10)})
+        total = this.state.operand - parseInt(this.state.value, 10);
         break;
       case "+" :
-        this.setState({"value": this.state.operand + parseInt(this.state.value, 10)})
+        total = this.state.operand + parseInt(this.state.value, 10);
         break;
       default:
         break;
     }
+
+    this.setState({"value": total, "operand": total})
+    return total;
   }
 
   render(){

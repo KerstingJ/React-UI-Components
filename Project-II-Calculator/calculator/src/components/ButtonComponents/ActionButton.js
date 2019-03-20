@@ -3,7 +3,6 @@ import './Button.css';
 
 class ActionButton extends React.Component {
     render(){
-        console.log(this.props);
         return (
             <div 
                 onClick={this.props.onClick} className={`btn actBtn ${this.props.size || ""}`}>{this.props.value}</div>
