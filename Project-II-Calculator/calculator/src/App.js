@@ -34,7 +34,9 @@ class App extends React.Component {
   }
 
   addOperation(event){
+    // if not a double clicked operator
     if (this.state.misfire === false){
+      // sets operand to current value or the computed value of the current value and current operand
       let operator = event.target.textContent;
       let newOperand = undefined;
 
@@ -74,7 +76,7 @@ class App extends React.Component {
         break;
     }
 
-    this.setState({"value": total, "operand": total})
+    this.setState({"value": total, "operand": null, "operator": null})
     return total;
   }
 
