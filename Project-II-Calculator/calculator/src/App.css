@@ -9,7 +9,7 @@
     font-weight: 300;
 }
 .btnContainer {
-    width: 400px;
+    max-width: 400px;
     display: flex;
 }
 
