@@ -1,0 +1,18 @@
+.btn {
+    width: 98px;
+    height: 98px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    border: 1px solid grey;
+}
+
+.bigBtn {
+    width: 298px;
+}
+
+.red {
+    background: darkred;
+    color: white;
+}

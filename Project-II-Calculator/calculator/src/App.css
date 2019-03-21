@@ -1,0 +1,25 @@
+.calc {
+    display: inline-flex;
+    flex-direction: column;
+
+    border: 1px solid grey;
+    padding-right: 0;
+    margin: 20px;
+
+    font-weight: 300;
+}
+.btnContainer {
+    max-width: 400px;
+    display: flex;
+}
+
+.numContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.redBtns {
+    background: darkred;
+    color: white;
+}

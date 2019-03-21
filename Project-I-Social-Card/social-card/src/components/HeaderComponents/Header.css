@@ -1,1 +1,26 @@
 /* All styles for your header Components live here */
+
+.headerContainer {
+    display: flex;
+}
+
+.headerContainer p {
+    max-width: 500px;
+}
+
+.headerContainer .imgContainer {
+    width: 75px;
+    height: 75px;
+    margin: 15px;
+    background: darkred;
+    border-radius: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.headerContainer .imgContainer img {
+    margin-top: 12.5%;
+    width: 60%;
+    height: auto;
+}
